@@ -1,3 +1,3 @@
 rootProject.name = "spring-gw-oauth2"
 
-include("gateway")
+include("gateway", "backend-service")
