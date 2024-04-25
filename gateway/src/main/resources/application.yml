@@ -1,0 +1,39 @@
+logging:
+  level:
+    root: {$LOG_LEVEL_ROOT:debug}
+
+server:
+  port: 8991
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      default-filters:
+        - TokenRelay=
+      routes:
+        - id: backend-service
+          uri: {$BND_SRV_URL:http://localhost:8992}
+          predicates:
+            - Path=/backend/**
+        - id: client-service
+          uri: {$CLI_SRV_URL:http://localhost:8993}
+          predicates:
+            - Path=/client/**
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: {$KC_JWKS:http://localhost:8990/realms/spring-gw-oauth2/protocol/openid-connect/certs}
+      client:
+        provider:
+          keycloak:
+            issuer-uri: {$KC_ISSUER_URL:http://localhost:8990/realms/spring-gw-oauth2}
+        registration:
+          ${KC_CLI_SCOPE:spring-gw-oauth2}:
+            provider: keycloak
+            client-id: {$KC_CLI_ID:spring-gw-oauth2-first}
+            client-secret: {$KC_CLI_SECRET}
+            authorization-grant-type: {$KC_CLI_GRANT_TYPE:authorization_code}
+            scope: openid
