@@ -1,0 +1,18 @@
+logging:
+  level:
+    root: debug
+
+server:
+  port: 8993
+
+spring:
+  application:
+    name: client-service
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${KC_JWKS:http://localhost:8990/realms/spring-gw-oauth2/protocol/openid-connect/certs}
+
+ws:
+  backend-url: http://localhost:8082/backed/ping

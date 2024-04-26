@@ -4,7 +4,7 @@ plugins {
     id("io.spring.dependency-management") version "1.1.4"
 }
 
-group = "com.github.kanataidarov.spring-gw-oauth2.backend-service"
+group = "com.github.kanataidarov.spring-gw-oauth2.client-service"
 version = "0.0.1"
 
 java {
@@ -18,8 +18,5 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.security:spring-security-config")
-    implementation("org.springframework.security:spring-security-oauth2-client")
-    implementation("org.springframework.security:spring-security-oauth2-jose")
-    implementation("org.springframework.security:spring-security-oauth2-resource-server")
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
 }

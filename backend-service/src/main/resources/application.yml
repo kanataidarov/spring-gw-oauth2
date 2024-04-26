@@ -1,0 +1,15 @@
+logging:
+  level:
+    root: ${LOG_LEVEL_ROOT:debug}
+
+server:
+  port: 8992
+
+spring:
+  application:
+    name: backend-service
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${KC_JWKS:http://localhost:8990/realms/spring-gw-oauth2/protocol/openid-connect/certs}
