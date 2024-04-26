@@ -31,9 +31,9 @@ spring:
             issuer-uri: ${KC_ISSUER_URL:http://localhost:8990/realms/spring-gw-oauth2}
             user-name-attribute: ${KC_ISSUER_NAME:spring-gw-oauth2-provider}
         registration:
-          spring-gw-oauth2-first:
+            spring-gw-oauth2-client:
             authorization-grant-type: authorization_code
-            client-id: spring-gw-oauth2-first
+            client-id: spring-gw-oauth2-client
             client-secret: ${KC_CLI1_SECRET}
             provider: kc
             scope: openid
