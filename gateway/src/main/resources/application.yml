@@ -32,11 +32,11 @@ spring:
             user-name-attribute: ${KC_ISSUER_NAME:spring-gw-oauth2-provider}
         registration:
             spring-gw-oauth2-client:
-            authorization-grant-type: authorization_code
-            client-id: spring-gw-oauth2-client
-            client-secret: ${KC_CLI1_SECRET}
-            provider: kc
-            scope: openid
+              authorization-grant-type: authorization_code
+              client-id: spring-gw-oauth2-client
+              client-secret: ${KC_CLI1_SECRET}
+              provider: kc
+              scope: openid
       resourceserver:
         jwt:
           jwk-set-uri: ${KC_JWKS:http://localhost:8990/realms/spring-gw-oauth2/protocol/openid-connect/certs}
